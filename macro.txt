@@ -1,0 +1,99 @@
+alt + f11
+
+____________
+Private Sub apellidos_Click()
+
+End Sub
+
+Private Sub cancelar_Click()
+Rem Salir o cerrar formulario con Unload Me
+    Unload Me
+    
+End Sub
+
+Private Sub gurdar_Click()
+Rem forma de llamar una funcion en otra funcion
+GuardarInfo
+End Sub
+Sub GuardarInfo()
+
+Rem Rem es para comentar
+Rem variable dim confila con tipo de datos Log
+
+
+ Dim confila As Long
+ Rem Worksheet define como moverse
+ Dim hoja As Worksheet
+ 
+ Rem que se posicione en la primera fila
+ Set hoja = Worksheets(1)
+ 
+Rem validar que no este vacio
+'validar todo
+'trim$ quita los spacio de derecha y izquierda
+Rem con ctrl + j mira los nombres y .Text vaidad text
+
+If Trim$(TextNombre.Text) = Empty Or Trim$(TextApellidos.Text) = Empty Or Trim$(TextEmail.Text) = Empty Or Trim$(TextFechaCumple) = Empty Or Trim$(TextTelefono.Text) = Empty Then
+'mostrar mensaje con MsgBox y  vbCritical es para avlidar que es critico el error
+MsgBox " llene todo los campos ", vbCritical, "datos imcompletos"
+
+Rem  exit sub salir del procedimiento
+Exit Sub
+  
+End If
+
+'validar la fila en la hoja donde se debe ingresar los datos
+Rem offset posicona de forma automatica en fila para ingresar los datos
+confila = hoja.Cells(Rows.Count, 1).End(xlUp).Offset(1, 0).Row
+
+'ingresar datos en la hoja de excel por columnas se le asigana el valuar de la cell = a la del form
+
+hoja.Cells(confila, 1).Value = Me.TextNombre.Value
+hoja.Cells(confila, 2).Value = Me.TextApellidos.Value
+hoja.Cells(confila, 3).Value = Me.TextEmail.Value
+hoja.Cells(confila, 4).Value = Me.TextTelefono.Value
+hoja.Cells(confila, 5).Value = Me.TextFechaCumple.Value
+
+'limpiar formulario
+Me.TextNombre.Value = ""
+Me.TextApellidos.Value = ""
+Me.TextEmail.Value = ""
+Me.TextTelefono.Value = ""
+Me.TextFechaCumple.Value = ""
+
+
+End Sub
+
+Private Sub nombre_Click()
+
+End Sub
+
+Private Sub UserForm_Click()
+
+End Sub
+
+
+__________________________
+
+debemos asignar macro
+insertar/modulo/
+
+en el modulo 
+crear la macro y llamar al formulario
+Sub ingresarClientes()
+Rem llamar formulario y que lo muestre
+frmClientes.Show
+
+End Sub
+
+
+
+
+lo llamamos desde el excel istar macro 
+
+
+
+
+
+
+
